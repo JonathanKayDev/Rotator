@@ -151,17 +151,36 @@
                 <div class="col-lg-4">
                     <p>The Code is structured into six functions.</p>
                     <h5>getString</h5>
-                    <p>##</p>
+                    <p>getString retrieves the user input string from the page. It utilises <strong>getElementById</strong> to get this string. 
+                        A class of <strong>"invisible"</strong> is added to the <strong>alert</strong> div, so that the div is no visible when text is being updated
+                        or if the input is not valid.
+                        The input string is validated with <strong>validateString</strong>, and if valid, the remaining code in <strong>getString</strong> will run.
+                        A new string is declared, which is set to the output of the <strong>simplifyString</strong> method, where the input string is stripped to a basic string without spaces.
+                        Another new string is declared which is the output of the <strong>reverseString</strong> method, where the input is the previous new string (output of <strong>simplifyString</strong>).
+                         The  <strong>checkPalindrome</strong> function is then called and set to a new object variable, which is then fed into 
+                        the <strong>displayString</strong> function.</p>
                     <h5>validateString</h5>
-                    <p>##</p>
+                    <p>The user input string is fed into this function, which checks to see if the string length is equal to 0 or formed entirely of white spaces.
+                        If either of these conditions evaluate to true, then a boolean variable named <strong>output</strong> is set to false, and an alert box notifies the user to 
+                        input a string. The <strong>output</strong> variable is then returned.
+                    </p>
                     <h5>simplifyString</h5>
-                    <p>##</p>
+                    <p>This method converts the input string to lowercase, removes all non-alphanumeric characters, and removes whitespace.</p>
                     <h5>reverseString</h5>
-                    <p>##</p>
+                    <p>reverseString returns a string value which is the reverse of the string fed into the function. This is achieved with a 'for' loop which runs 
+                        backwards from the last index of the input array to 0 (last index is the array length -1, since js array indices start from 0).
+                        On each iteration of the loop, the char is added to a new array called <strong>revString</strong>, which is returned after the loop completes.
+                    </p>
                     <h5>checkPalindrome</h5>
-                    <p>##</p>
+                    <p>This method accepts two inputs (simplified user input string, and reversed string), and checks to see if these 2 strings are equal, by using an 'if statement'.
+                        Depending on the output, the .msg parameter of a new object is set accordingly, and then the .reversed parameter of the new object is assigned. The object is then returned from the function 
+                        containing 2 parameters (2 strings).
+                    </p>
                     <h5>displayString</h5>
-                    <p>##</p>
+                    <p>The displayString function accepts an object input, which should contain 2 properties (.msg and .reversed). The object contains strings which are used to inform the user as to 
+                        whether the palindrome check was successful and the reversed string of the user input. The <strong>alert</strong> div then has the class of <strong>"invisible"</strong> removed so that the output is 
+                        visible to the user.
+                    </p>
                 </div>
             </div>
         </div>
