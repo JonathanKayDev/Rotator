@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Jonathan Kay</title>
+    <title>RotatoR: A Coding Project By Jonathan Kay</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,7 +20,7 @@
     <!-- Nav Section-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="/img/JK-Fav-Dark.svg" class="d-inline-block align-text-bottom" width="25" height="25"> APP NAME</a>
+            <a class="navbar-brand" href="#"><img src="/img/JK-Fav-Dark.svg" class="d-inline-block align-text-bottom" width="25" height="25"> RotatoR</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,7 @@
                         <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/JonathanKayDev/Rotator">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="https://www.jonathankay.dev">About</a>
@@ -49,24 +49,119 @@
     <!-- Main Section-->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for RotatoR</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <!-- Prism Code-->
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            // Call Hello World
-                            function HelloWorld() {
-                                alert("Hello World!");
+                            // CONTROLLER FUNCTION(S)
+                            // get user string from the page
+                            function getString() {
+                                let userString = document.getElementById("userString").value;
+                                document.getElementById("alert").classList.add("invisible");
+                            
+                                // check for palindrome, if valid input
+                                if (validateString(userString)) {
+                                    let inputString = simplifyString(userString);
+                                    let outputString = reverseString(inputString);
+                            
+                                    // check for palindrom
+                                    let returnObj = checkPalindrome(inputString, outputString);
+                            
+                                    // display output message 
+                                    displayString(returnObj);
+                                }
+                            }
+                            
+                            
+                            
+                            // LOGIC FUNCTION(S)
+                            function validateString(inputString) {
+                                let output = true;
+                            
+                                // strip out space a non-letters
+                                inputString = simplifyString(inputString); 
+                            
+                                // check if string is empty or has only white spaces
+                                if (inputString.length === 0 || !inputString.trim()) {
+                                    alert("Please enter a string to check!")
+                                    output = false;
+                                }
+                            
+                                return output;
+                            }
+                            
+                            
+                            // remove whitespace, upper case, and special characters
+                            function simplifyString(inputString){
+                                let simpleString = "";
+                            
+                                simpleString = inputString.toLowerCase();
+                                simpleString = simpleString.replace(/[^a-z0-9]/g,"");
+                                simpleString = simpleString.replaceAll(/\s+/g,"");
+                            
+                                return simpleString;
+                            }
+                            
+                            // reverse string
+                            function reverseString(inputString) {
+                                let revString = [];
+                            
+                                // reverse the string using a for loop
+                                for ( let i = inputString.length -1; i >=0; i--) {
+                                    revString += inputString[i];
+                                }
+                            
+                                return revString;
+                            }
+                            
+                            // check for palindrome
+                            function checkPalindrome(inputString, reverseString) {
+                                let returnObj = {};
+                            
+                                if (inputString == reverseString) {
+                                    returnObj.msg = `YES! Palindrome found!`;
+                                }
+                                else
+                                {
+                                    returnObj.msg = `Sorry! No palindrome found.`;
+                                }
+                            
+                                returnObj.reversed = reverseString;
+                            
+                                return returnObj;
+                            }
+                            
+                            
+                            // VIEW FUNCTION(S)
+                            // Display the output string to the user
+                            function displayString(returnObj) {
+                                // write message to page
+                                document.getElementById("alertHeader").innerHTML = returnObj.msg;
+                                document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.reversed}`;
+                            
+                                // show the alert box
+                                document.getElementById("alert").classList.remove("invisible");
                             }
                         </code>
                     </pre>
                 </div>
                 <!-- Code Description-->
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World!".</p>
+                    <p>The Code is structured into six functions.</p>
+                    <h5>getString</h5>
+                    <p>##</p>
+                    <h5>validateString</h5>
+                    <p>##</p>
+                    <h5>simplifyString</h5>
+                    <p>##</p>
+                    <h5>reverseString</h5>
+                    <p>##</p>
+                    <h5>checkPalindrome</h5>
+                    <p>##</p>
+                    <h5>displayString</h5>
+                    <p>##</p>
                 </div>
             </div>
         </div>
